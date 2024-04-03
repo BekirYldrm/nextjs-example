@@ -2,14 +2,45 @@
 import Input, { Inputs } from '@/components/Input'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import YupPassword from 'yup-password'
+
+YupPassword(yup)
+
+export const schema = yup
+    .object({
+        email: yup.string().email().required(),
+        name: yup.string().max(20).required(),
+        lastname: yup.string().max(20).required(),
+        password: yup.string().password().required(),
+        passwordRepeat: yup.string().password().required().oneOf([yup.ref('password')], 'Passwords do not match')
+    }).required()
+
+
 
 
 const Register = () => {
 
-    const { register, formState: { errors }, handleSubmit } = useForm<Inputs>({})
+    const { register, formState: { errors }, handleSubmit, watch } = useForm<Inputs>({ resolver: yupResolver(schema) })
+
+    function passwordVal() {
+
+        if (watch('password') !==watch('passwordRepeat') ) {
+            return "The passwords do not match"
+
+        }
+
+        else {
+            return "The passwords match"
+        }
+    }
 
 
     const onSubmit = (data: Inputs) => console.log(data)
+
+    console.log(errors);
+
 
 
 
@@ -24,7 +55,6 @@ const Register = () => {
                     type='text'
                     name='email'
                     register={register}
-                    required={{ value: true, message: 'Email Boş Olamaz.' }}
                     message={errors.email?.message}
                 />
 
@@ -33,7 +63,6 @@ const Register = () => {
                     type="text"
                     name='name'
                     register={register}
-                    required={{ value: true, message: 'Name Boş Olmaz' }}
                     message={errors.name?.message}
                 />
 
@@ -42,7 +71,6 @@ const Register = () => {
                     type="text"
                     name='lastname'
                     register={register}
-                    required={{ value: true, message: 'Lastname Boş Olmaz' }}
                     message={errors.lastname?.message}
                 />
                 <Input
@@ -50,7 +78,6 @@ const Register = () => {
                     type="text"
                     name='password'
                     register={register}
-                    required={{ value: true, message: 'Password Boş Olmaz' }}
                     message={errors.password?.message}
                 />
 
@@ -59,7 +86,6 @@ const Register = () => {
                     type="text"
                     name='passwordRepeat'
                     register={register}
-                    required={{ value: true, message: 'Password Repeat Boş Olmaz' }}
                     message={errors.passwordRepeat?.message}
                 />
                 <button className='btn' type='submit'>Signup</button>

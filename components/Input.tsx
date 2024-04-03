@@ -14,19 +14,16 @@ interface Props {
   type: string;
   id: string
   register: UseFormRegister<Inputs>
-  required: {
-    value: boolean
-    message: string
-  }
+
   message: string | undefined
 }
 
-const Input = ({ name, id, register, type, required, message }: Props) => {
+const Input = ({ name, id, register, type, message }: Props) => {
   return (
     <>
 
-      <input type={type} id={id}  {...register(name, { required })} placeholder={name} />
-      <p>{message}</p>
+      <input type={type} id={id}  {...register(name)} placeholder={name} />
+      <p >{message}</p>
 
 
     </>

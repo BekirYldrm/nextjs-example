@@ -1,10 +1,18 @@
 import Input, { Inputs } from '@/components/Input'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import YupPassword from 'yup-password'
+import { schema } from './register'
+YupPassword(yup)
+
+
+
 
 const Login = () => {
 
-    const { register, formState: { errors }, handleSubmit } = useForm<Inputs>({})
+    const { register, formState: { errors }, handleSubmit } = useForm<Inputs>({resolver: yupResolver(schema)})
 
 
     const onSubmit = (data: Inputs) => console.log(data)
@@ -22,7 +30,6 @@ const Login = () => {
                     name="email"
                     type="text"
                     register={register}
-                    required={{ value: true, message: 'Email boş olmaz' }}
                     message={errors.email?.message}
 
 
@@ -33,7 +40,6 @@ const Login = () => {
                     name="password"
                     type="password"
                     register={register}
-                    required={{ value: true, message: 'Password boş olmaz' }}
                     message={errors.password?.message}
 
                 />
