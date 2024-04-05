@@ -4,8 +4,8 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup"
 
-import { Inputs } from '@/types/type'
-import { schema } from '@/types/schema'
+import { Inputs } from '@/types/Type'
+import { schema } from '@/types/Schema'
 
 
 
@@ -63,7 +63,7 @@ const Register = () => {
                     register={register}
                     message={errors.passwordRepeat?.message}
                 />
-                <button className='btn' type='submit'>Signup</button>
+                <button className='btn-custom' type='submit'>Signup</button>
             </form>
         </div>
 
