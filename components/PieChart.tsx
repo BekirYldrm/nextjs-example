@@ -8,17 +8,17 @@ export const data = {
   labels: ['Income', 'Outcome'],
   datasets: [
     {
-      label: '# of Votes',
-      data: [12, 19],
+      label: '%',
+      data: [66.7, 33.3],
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
+        'rgb(190, 123, 114)',
+        'rgb(255, 235, 178)',
 
       ],
       borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-  
+        'rgb(190, 123, 114)',
+        'rgb(255, 235, 178)',
+
       ],
       borderWidth: 1,
     },
@@ -26,8 +26,10 @@ export const data = {
 };
 
 const PieChart = () => {
-  return ( <Pie data={data} />
-    
+  return (
+    <div className='home-bottom-div col-xxl-5 col-xl-7'>
+      <Pie data={data} />
+    </div>
   )
 }
 

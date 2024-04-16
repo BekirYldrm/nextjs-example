@@ -1,16 +1,11 @@
-import { Props } from '@/types/Type'
+import { InputProps } from '@/types/Type'
 import React from 'react'
-import { Path, UseFormRegister, UseFormStateReturn } from 'react-hook-form'
 
-
-
-const Input = ({ name, id, register, type, message }: Props) => {
+const Input = ({ name, register, type, message }: InputProps) => {
   return (
     <>
-
-      <input type={type} id={id}  {...register(name)} placeholder={name} />
-      <p >{message}</p>
-
+      <input className='form-input' type={type} placeholder={name}   {...register(name)} />
+      <p>{message}</p>
     </>
   )
 }
