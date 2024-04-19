@@ -153,18 +153,18 @@ tr {
   color: #cac8b0;
 }
 
-.home-form-close-button{
-  border-radius:100%;
+.home-form-close-button {
+  border-radius: 100%;
   position: absolute;
   right: 0;
   top: 0;
-
 }
 
 .form-select {
   width: 75%;
   border: 1px solid #454639;
   border-radius: 0.4rem;
+  margin: 5%;
 }
 
 .date-input {
