@@ -26,6 +26,7 @@ export interface FilterProps {
 }
 export interface EditFormProps {
   sumbitForm: SubmitHandler<TableData>
+  clickHandler: React.MouseEventHandler<HTMLButtonElement>
 }
 
 

@@ -1,4 +1,4 @@
-import React, { FormEvent, FormEventHandler, SyntheticEvent, useState } from 'react'
+import React, { useState } from 'react'
 import Balance from './Balance'
 import Filter from './Filter'
 import PieChart from './PieChart'
@@ -20,13 +20,13 @@ const Home = () => {
     }
 
     const sumbitForm = (data: TableData) => {
-        const currentDate = new Date();
-        const offset = currentDate.getTimezoneOffset();
-        currentDate.setMinutes(currentDate.getMinutes() - offset);
-        data.date = currentDate.toISOString().slice(0, 19);
+        const currentDate = new Date()
+        const offset = currentDate.getTimezoneOffset()
+        currentDate.setMinutes(currentDate.getMinutes() - offset)
+        data.date = currentDate.toISOString().slice(0, 19)
         setArray((prevent) => [...prevent, data])
     }
-    
+
     const sumbitDate = (data: DateData) => {
         setStartDate(data.startDate)
         setEndDate(data.endDate)
@@ -46,7 +46,7 @@ const Home = () => {
             </div>
 
             {isOpen && (
-                <EditForm sumbitForm={sumbitForm} />
+                <EditForm sumbitForm={sumbitForm} clickHandler={clickHandler} />
             )}
         </div>
     )
