@@ -1,11 +1,11 @@
-import { ActionData, postActionData } from "@/types/Type"
+import { ActionData, formActionData } from "@/types/Type"
 
-const postAction = async (request: postActionData) => {
+const patchAction = async (request: formActionData) => {
 
 
     try {
         const response = await fetch('http://localhost:8080/action', {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -13,11 +13,10 @@ const postAction = async (request: postActionData) => {
         })
 
         const responseData:ActionData = await response.json()
-                
     }
     catch (err) { console.error(err) }
 }
 
-export default postAction;
+export default patchAction;
 
 

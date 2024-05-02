@@ -28,6 +28,7 @@ export interface formActionData {
   description: string
   money: number
   type: string
+  id?: number | null | undefined;
 }
 
 export interface DateData {
@@ -75,6 +76,7 @@ export interface TableProps {
   startDate: string | undefined
   endDate: string | undefined
   array: Array<ActionData>
+  clickHandler: (id: number | null) => void;
 }
 
 export interface PieChartProps {
@@ -83,11 +85,11 @@ export interface PieChartProps {
 
 
 export interface FilterProps {
-  clickHandler: MouseEventHandler<HTMLButtonElement>
+  clickHandler: (id: number | null) => void;
   sumbitDate: SubmitHandler<DateData>
 }
 export interface EditFormProps {
   sumbitForm: SubmitHandler<formActionData>
-  clickHandler: MouseEventHandler<HTMLButtonElement>
+  clickHandler: (id: number | null) => void
 }
 

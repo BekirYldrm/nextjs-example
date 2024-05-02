@@ -1,7 +1,7 @@
 import { TableProps } from '@/types/Type'
 import React from 'react'
 
-const Table = ({ startDate, endDate, array }: TableProps) => {
+const Table = ({ startDate, endDate, array , clickHandler }: TableProps) => {
 
   return (
     <div className='home-bottom-div col-xxl-5 col-xl-7'>
@@ -24,11 +24,16 @@ const Table = ({ startDate, endDate, array }: TableProps) => {
               }
             })
               .map(element => {
+                function onClickHandler(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+                  clickHandler(element.id)
+                }
+
                 return (
                   <tr key={element.id}>
                     <td>{element.date}</td>
                     <td>{element.money}</td>
                     <td>{element.type}</td>
+                    <td><button className='btn btn-link' onClick={onClickHandler}>Edit</button></td>
                   </tr>
                 )
               })

@@ -14,15 +14,21 @@ const postLogin = async (request: UserLogin) => {
             body: JSON.stringify(request),
         })
 
-        const responseData = await response.json()
-        if (responseData !== null) {
-            alert("Kullanici Girisi yaptiniz.Ana Sayfaya Yönledirliyorsunuz...")
+        if (response.status === 200) {
+            const responseData = await response.json()
+
+            alert("Kullanici girisi yaptiniz.Ana sayfaya yönledirliyorsunuz...")
 
             router.push(`/${responseData.id}?email=${request.email}&password=${request.password}`)
         }
+        else if (response.status === 401) {
+            alert("Kullanici şifresi yanlistir, lütfen tekrar deneyiniz...")
+        }
+        else if (response.status === 404) {
+            alert("Email adresine bagli kullanici yoktur, lütfen tekrar deneyiniz...")
+        }
         else {
-            console.log(responseData);
-
+            alert("Beklenmeyen bir hata olustu. Lütfen daha sonra tekrar deneyiniz.");
         }
 
     }

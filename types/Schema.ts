@@ -24,4 +24,5 @@ export const actionSchema = yup
         type: yup.string().required(),
         description: yup.string().required(),
         money: yup.number().required(),
+        id: yup.number().nullable(),
     }).required()

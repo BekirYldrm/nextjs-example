@@ -9,9 +9,8 @@ const EditForm = ({ sumbitForm, clickHandler }: EditFormProps) => {
   const { handleSubmit, register, formState: { errors } } = useForm<formActionData>({ resolver: yupResolver(actionSchema) })
 
   function closeForm(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    clickHandler(event);
+    clickHandler(null);
   }
-
 
   return (
     <form className='home-form col-3' onSubmit={handleSubmit(sumbitForm)}>
