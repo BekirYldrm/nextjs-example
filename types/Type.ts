@@ -61,6 +61,7 @@ export interface InputLoginProps {
   type: string;
   register: UseFormRegister<UserLogin>
   message: string | undefined
+  value: string | string[] | undefined
 }
 
 

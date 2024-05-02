@@ -13,14 +13,15 @@ const postRegister = async (request: UserRegister) => {
             body: JSON.stringify(request),
         })
 
-        const responseData = await response.json()
 
-        if (responseData.id === undefined) {
-            alert("Kullanici Kayit Olurken Bir Hata Meydana Geldi")
+
+        if (response.status === 200) {
+            const responseData = await response.json()
+            alert("Kullanici Kayit Oldu.Giris Sayfasina Yönlendirileceksiniz...")
+            router.push(`/login?email=${responseData.email}&password=${responseData.password}`)
         }
         else {
-            alert("Kullanici Kayit Oldu.Giris Sayfasina Yönlendirileceksiniz...")
-            router.push('/login')
+            alert("Kullanici Kayit Olurken Bir Hata Meydana Geldi")
         }
     }
     catch (err) { console.error(err) }
