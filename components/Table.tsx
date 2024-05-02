@@ -24,18 +24,15 @@ const Table = ({ startDate, endDate, array }: TableProps) => {
               }
             })
               .map(element => {
-
                 return (
                   <tr key={element.id}>
                     <td>{element.date}</td>
                     <td>{element.money}</td>
                     <td>{element.type}</td>
-                    <td><a href="">Edit</a></td>
                   </tr>
                 )
               })
           }
-
         </tbody>
       </table>
     </div>

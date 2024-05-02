@@ -13,10 +13,31 @@ nav {
   background-color: #a6ffb5;
 }
 
+p {
+  color: rgb(209, 109, 109);
+  font-size: small;
+  font-weight: lighter;
+}
+
 h4 {
   font-weight: bolder;
   font-size: 2rem;
 }
+
+button {
+  margin: 4%;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  height: 3rem;
+  border-radius: 1rem;
+  box-shadow: 1px 2px 1px #666666;
+}
+
 .form-input {
   font-weight: normal;
   padding: 5px 10px;
@@ -36,12 +57,6 @@ h4 {
   color: #cac8b0;
 }
 
-p {
-  color: rgb(209, 109, 109);
-  font-size: small;
-  font-weight: lighter;
-}
-
 .form-div {
   display: flex;
   background-color: #ffffff;
@@ -55,18 +70,10 @@ p {
   text-align: center;
 }
 
-.btn-custom {
-  background-image: linear-gradient(to bottom, #aafff5, #1f97dd);
-  border-radius: 1rem;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  padding: 0.5rem 1rem;
-  border: none;
-}
-
-.btn-custom:hover {
-  background-image: linear-gradient(to bottom, #1f97dd, #aafff5);
+.form-select {
+  width: 75%;
+  border: 1px solid #454639;
+  border-radius: 0.4rem;
 }
 
 .home-top-div {
@@ -87,27 +94,8 @@ p {
 
 .home-p {
   color: #000000;
-  font-size: 1.9rem;
+  font-size: 2rem;
   margin-top: 0.9rem;
-}
-
-button {
-  margin: 4%;
-}
-
-table {
-  width: 100%;
-}
-
-tr {
-  height: 3rem;
-  border-radius: 1rem;
-  box-shadow: 1px 2px 1px #666666;
-}
-
-.container {
-  position: relative;
-  z-index: 1;
 }
 
 .home-form {
@@ -136,7 +124,6 @@ tr {
   width: 75%;
   font-weight: normal;
   padding: 5px 10px;
-  margin: 5%;
   outline: none;
   background: #ffffff;
   border: 1px solid #454639;
@@ -160,24 +147,38 @@ tr {
   top: 0;
 }
 
-.form-select {
-  width: 75%;
-  border: 1px solid #454639;
-  border-radius: 0.4rem;
-  margin: 5%;
-}
-
 .date-input {
   margin: 4%;
   width: 20%;
   height: 50%;
   font-size: 0.8rem;
 }
+
 .search-button {
   height: 50%;
 }
+
 .add-button {
   border-radius: 100%;
   height: 50%;
   border: none;
+}
+
+.btn-custom {
+  background-image: linear-gradient(to bottom, #aafff5, #1f97dd);
+  border-radius: 1rem;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 0.5rem 1rem;
+  border: none;
+}
+
+.btn-custom:hover {
+  background-image: linear-gradient(to bottom, #1f97dd, #aafff5);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
 }

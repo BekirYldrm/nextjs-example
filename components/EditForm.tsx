@@ -1,26 +1,33 @@
-import { EditFormProps, TableData } from '@/types/Type'
+import { actionSchema } from '@/types/Schema';
+import { EditFormProps, formActionData } from '@/types/Type'
+import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react'
 import { useForm } from 'react-hook-form';
 
 const EditForm = ({ sumbitForm, clickHandler }: EditFormProps) => {
 
-  const { handleSubmit, register } = useForm<TableData>()
+  const { handleSubmit, register, formState: { errors } } = useForm<formActionData>({ resolver: yupResolver(actionSchema) })
 
   function closeForm(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     clickHandler(event);
   }
 
+
   return (
     <form className='home-form col-3' onSubmit={handleSubmit(sumbitForm)}>
       <h2 className='home-form-header'>CREATE/EDIT</h2>
-      <input className='home-form-input' type="text" placeholder='Description' {...register('description')} />
-      <input className='home-form-input' type="number" placeholder='Money'  {...register('money')} />
-      <select className='form-select'   {...register('type')}>
+
+      <input className='home-form-input' type="text" placeholder='Description' {...register("description")} />
+      <p>{errors.description?.message}</p>
+      <input className='home-form-input' type="number" placeholder='Money' step="0.01" {...register("money")} />
+      <p>{errors.money?.message}</p>
+      <select className='form-select'  {...register("type")}>
         <option value="Income">Income</option>
-        <option value="OutCome">OutCome</option>
+        <option value="Outcome">Outcome</option>
       </select>
+      <p>{errors.type?.message}</p>
       <button className='btn  btn-success' type='submit'>Save</button>
-      <button className='btn  btn-danger btn-sm home-form-close-button' onClick={closeForm}>X</button>
+      <button className='btn  btn-outline-danger btn-sm home-form-close-button' onClick={closeForm}>X</button>
     </form>
   )
 }
